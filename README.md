@@ -76,7 +76,19 @@
 
 ### （九）使用者交互与设计（axure产品原型）
 
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/232919_9a19ccc1_1829884.png "12.png")
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/232930_7d90ec2b_1829884.png "13.png")
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/232940_2c5b9629_1829884.png "14.png")
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/232949_ba1542ce_1829884.png "15.png")
+
+
+
 ### （十）产品结构图
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1209/164128_d24fd217_1829884.png "博物馆7.png")
 
 ### （十一）API的运用：
 
