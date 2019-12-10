@@ -88,7 +88,7 @@
 
 ### （十）产品结构图
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1209/164128_d24fd217_1829884.png "博物馆7.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1211/001226_d715b7d5_1829884.png "22.png")
 
 ### （十一）API的运用：
 
