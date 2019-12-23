@@ -9,7 +9,7 @@
 | 开发者   | 何俊鹏       |
 | 测试者   | 何俊鹏       |
 
-### （一）加值宣言：
+### (一)加值宣言：
 
 爱车保险APP，在充分理解了用户对自己爱车遭受的损伤程度了解的需求以及汽车保险公司在业务量扩张的背景下需要改革业务以求的竞争中实现提升。
 
@@ -37,11 +37,11 @@
 
 ### （五）目标：
 
-前期目标：
+前期目标：
 
 1.通过车辆外观识别API的调用，为用户和保险公司对汽车受损类型和汽车受损程度定位。
 
-后期目标：（目前不做）
+后期目标：（目前不做）
 
 1.在实现前期目标的前提下，积累训练集数据，后期可以借助大量的数据集进行机器学习，后期可以对车辆受损程度级别小的理赔申请进行自动的定损、审核和理赔。
 
@@ -67,28 +67,50 @@
 
 ### （八）用户需求:（使用的人工智能要反映到需求列表中）
 
-| 用户案例                                   | 对应功能            | 重要程度 |
-| ------------------------------------------ | ------------------- | -------- |
-| 保险公司减少雇员，提高员工的工作效率       | 车辆外观损伤识别API | 重要     |
-| 保险公司智能机器自动理赔                   | 机器学习            | 一般     |
-| 用户了解理赔申请进展，寻找附近的汽车维修店 | 智能导航            | 一般     |
+| 用户案例         | 对应功能    | 重要性 |
+| ---------------- | ----------- | ------ |
+| 汽车外观损伤识别 | 受损识别API | 重要   |
+| 资质维修点导航   | 路线导航    | 重要   |
+| 用户了解理赔进程 | 数据更新    | 一般   |
 
 
 ### （九）使用者交互与设计（axure产品原型）
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/232919_9a19ccc1_1829884.png "12.png")
+#### 登陆界面
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/232930_7d90ec2b_1829884.png "13.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040032_92a12b63_1829884.png "page1.png")
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/232940_2c5b9629_1829884.png "14.png")
+#### 首页示意图
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1210/232949_ba1542ce_1829884.png "15.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040051_af802b21_1829884.png "首页示意图.png")
 
+#### 照片审核
 
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040108_1452f6a3_1829884.png "照片审核.png")
+
+#### 受损等级评定
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040127_ba047670_1829884.png "受损等级评定.png")
+
+#### 理赔进度
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040141_8daf28c2_1829884.png "理赔进度.png")
+
+#### 维修地点推荐
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040157_60e5ce53_1829884.png "路线导航.png")
+
+#### 消息页面
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040210_a22e2d07_1829884.png "消息.png")
+
+#### 我的信息
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040222_b61b6a4c_1829884.png "我的信息.png")
 
 ### （十）产品结构图
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1211/001226_d715b7d5_1829884.png "22.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/040335_e71a45fc_1829884.png "结构图1.png")
 
 ### （十一）API的运用：
 
@@ -96,4 +118,136 @@
 
 2.智能导航API：为用户提供附近的汽车维修点进行汽车的检查和维修。
 
+接口地址：https://aip.baidubce.com/rest/2.0/image-classify/v1/vehicle_damage
 
+请求方式：https://aip.baidubce.com/oauth/2.0/token
+
+输入：
+
+代码模块导入：
+
+```
+import base64
+import urllib
+from typing import BinaryIO
+from urllib.parse import urlencode
+from urllib import request
+import requests
+from urllib.request import urlopen
+import json
+```
+
+输入代码：
+
+```
+host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=GjE4Yiu9IdPdq5LYrm7vPG2w&client_secret=2GcjHthph7vxwXzfxGU409G6mOp8wKkj'
+headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+}
+res = requests.get(url=host, headers=headers).json()
+access_token=res['access_token']
+
+request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/vehicle_damage"
+
+f = open('2.jpg', 'rb')
+img = base64.b64encode(f.read())
+params = {"image":img}
+request_url = request_url + "?access_token=" + access_token
+response = requests.post(request_url, data=params, headers=headers)
+if response:
+    print (response.json())
+```
+
+
+结果输出
+
+```
+{'log_id': 3412726100092736631, 'result': {'damage_info': [{'parts': '右后门', 'type': '褶皱或波浪', 'probability': 83}]}}
+```
+
+百度车辆外观损伤识别API测试：
+
+1.在测试中我输入了图片1
+
+
+
+```
+{'log_id': 3412726100092736631, 'result': {'damage_info': [{'parts': '右后门', 'type': '褶皱或波浪', 'probability': 83}]}}
+```
+
+百度车辆外观损伤识别API准确的识别了车辆损伤的位置，和损伤的类别，损伤程度。
+
+2.测试中，我输入了图片2
+
+
+```
+{'log_id': 7635812925649155255, 'result': {'damage_info': [{'numeric_info': [{'width': 0.21999999880791, 'area': 0.80210000276566, 'ratio': 0.0079494547098875, 'height': 6.0100002288818}, {'width': 0.11999999731779, 'area': 0.12720000743866, 'ratio': 0.0012606541858986, 'height': 1.5599999427795}], 'parts': '后保险杠', 'type': '刮擦', 'probability': 78}]}}
+```
+
+百度车辆外观损伤识别API依旧能够稳定的识别汽车受损的位置和受损类型。
+
+总结：目前市面上，针对车辆外观受损识别的API只有百度一家，其他平台虽然有关于图像识别类型的API，但是在汽车受损识别领域都远不如百度API成熟，稳定，目前百度是这个领域的领先者。
+
+### （十二）AI产品概率性：
+
+> 目前，车辆外观损伤识别API针对常见小汽车车型，识别车辆外观受损部件及损伤类型，可识别数十种车辆部件、五大类外观损伤（刮擦、凹陷、开裂、褶皱、穿孔）。已经可以的完成车辆的外观受损识别，同时还能够具体到零部件受损情况。
+
+
+1.单一的车辆受损类型，使用百度车辆外观受损API可以快速的识别出来，但是综合多样的车辆受损情况，API运行的不出结果。
+
+解决方法：逐部分的上传车辆受损的照片、
+
+
+2.百度车辆外观受损识别API对上传的车辆受损图片的要求比较高，需要较高清的图片，同时图片中的车辆还需要比较干净，否则影响准确的识别。
+
+解决方法：擦拭车外的脏物、对准车辆的受损位置拍照提升拍照的精确度。
+
+### (十三)API使用风险评估
+
+#### 产品的可行性:
+
+1.爱车保险是小程序，本身的所需要的内存不大，小程序的使用简易迎合了用户快速理赔的心理。
+
+2.依据目前的汽车保险业务增长，爱车保险小程序有了群众的基础，同时在保险公司的需求也是明显的，可以与保险公司商谈合作，以求进一步的发展，实现共赢。
+
+3.爱车保险是小程序开发，开发量也比较小，利用现有的API也能大量的节约开发资源，将大大减少成本。
+
+####交互需求：
+
+1.申请拍照功能需要获得手机的授权
+
+2.点击搜索或者其他需要输入的时候，需要弹出输入键盘，同时在点击搜索键时或空白位置的时候，键盘会退出。
+
+3.在首页中的功能模块中，点击可以跳转到其功能的位置上。
+
+4.搜索框默认为空
+
+#### 异常流：
+
+1.根据API返回的数字段，在小程序中转换得出具体的输出结果，根据返回的错误结果我们可以让用户根据结果重新上传图片或者重新拍摄光线良好的照片。
+
+2.车辆损伤输出结果与用户判断不一的时候，提示用户详细拍下汽车损伤位置细节的照片。
+
+3.用户不满维修点推荐的话，可以选择有维修资格和合作的维修点实现汽车维修。
+
+#### 非功能性需求：
+
+1.可用性：百度车辆外观损伤识别API有1000次的免费调用，同时也处在免费使用的期间，在这个期间可以免费的调用API。
+
+2.性能：预计小程序上线，在未实现与保险公司合作的前期，使用人数日均5000人次，因而对于网络宽带的要求不高，100M宽带可以实现用户使用需求。
+
+3.易用性：目前小程序的原型界面简洁，符合用户使用习惯。
+
+4.安全性：小程序使用微信登陆，微信的安全性值得信赖。
+
+#### 结果预期：
+
+1.前期：前期处于市场测试期，产品先投入市场，得出测试数据和积累用户。
+
+2.中期：寻求与保险公司的合作，实现小程序的脱离，正式开发APP，正式投入市场运营。
+
+3.日常运营，保持用户增长，不断优化APP，将APP做大做强，实现公司化运营。
+
+#### 清单
+
+[原型图浏览](http://nfunw019.gitee.io/car_insurance_prototype/#g=1&p=%E7%88%B1%E8%BD%A6%E4%BF%9D%E9%99%A9%E7%99%BB%E9%99%86 "原型图")
