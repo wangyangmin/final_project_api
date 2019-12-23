@@ -169,7 +169,7 @@ if response:
 
 1.在测试中我输入了图片1
 
-
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/232547_00925fcf_1829884.jpeg "1.jpg")
 
 ```
 {'log_id': 3412726100092736631, 'result': {'damage_info': [{'parts': '右后门', 'type': '褶皱或波浪', 'probability': 83}]}}
@@ -179,6 +179,7 @@ if response:
 
 2.测试中，我输入了图片2
 
+![输入图片说明](https://images.gitee.com/uploads/images/2019/1223/232621_757d2872_1829884.jpeg "2.jpg")
 
 ```
 {'log_id': 7635812925649155255, 'result': {'damage_info': [{'numeric_info': [{'width': 0.21999999880791, 'area': 0.80210000276566, 'ratio': 0.0079494547098875, 'height': 6.0100002288818}, {'width': 0.11999999731779, 'area': 0.12720000743866, 'ratio': 0.0012606541858986, 'height': 1.5599999427795}], 'parts': '后保险杠', 'type': '刮擦', 'probability': 78}]}}
@@ -212,7 +213,7 @@ if response:
 
 3.爱车保险是小程序开发，开发量也比较小，利用现有的API也能大量的节约开发资源，将大大减少成本。
 
-####交互需求：
+#### 交互需求：
 
 1.申请拍照功能需要获得手机的授权
 
@@ -250,4 +251,4 @@ if response:
 
 #### 清单
 
-[原型图浏览](http://nfunw019.gitee.io/car_insurance_prototype/#g=1&p=%E7%88%B1%E8%BD%A6%E4%BF%9D%E9%99%A9%E7%99%BB%E9%99%86 "原型图")
+[原型图仓库](http://nfunw019.gitee.io/car_insurance_prototype/#g=1&p=%E7%88%B1%E8%BD%A6%E4%BF%9D%E9%99%A9%E7%99%BB%E9%99%86 "原型图")
