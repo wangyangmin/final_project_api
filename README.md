@@ -21,6 +21,8 @@
 
 #### 20X20PPT版本
 
+#### [20X20PPT](https://github.com/wangyangmin/final_project_api/blob/master/API_%E7%88%B1%E8%BD%A6%E4%BF%9D%E9%99%A9.pptx)
+
 ### (一)加值宣言：
 
 + 爱车保险APP，在充分理解了用户对自己爱车遭受的损伤程度了解的需求以及汽车保险公司在业务量扩张的背景下需要改革业务以求的竞争中实现提升。
